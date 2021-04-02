@@ -105,7 +105,7 @@ export default function Layout({ children }) {
             variant="h5"
             className={classes.title}
           >
-            Ninja Notes
+            Heba Notes
           </Typography>
         </div>
 
