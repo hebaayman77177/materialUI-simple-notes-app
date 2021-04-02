@@ -12,8 +12,9 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { useHistory } from "react-router-dom";
 import { findByLabelText } from "@testing-library/dom";
+import theme from '../theme';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>{return {
   field: {
     marginTop: 20,
     marginBottom: 20,
@@ -22,9 +23,12 @@ const useStyles = makeStyles({
   onelineradio: {
     flexDirection:"row"
   },
-});
+  categorycolor: {
+    color:theme.palette.primary.main
+  }
+}});
 export default function Create() {
-  const classes = useStyles();
+  const classes = useStyles(theme);
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -55,7 +59,7 @@ export default function Create() {
     <Container>
       <Typography
         variant="h6"
-        color="textSecondary"
+        color="primary"
         component="h2"
         gutterBottom
       >
@@ -89,7 +93,7 @@ export default function Create() {
         />
 
         <FormControl className={classes.field}>
-          <FormLabel>Note Category</FormLabel>
+          <FormLabel className={classes.categorycolor}>Note Category</FormLabel>
           <RadioGroup
             value={category}
             onChange={(e) => setCategory(e.target.value)}
